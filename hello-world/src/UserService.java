@@ -4,10 +4,6 @@ public class UserService {
 
     public void process(){
 
-        //List numbers = new ArrayList();
-        // using arrays
-        //Integer in = new Integer(1);
-
         List numbers = Arrays.asList(1,4,2,5,16,7);
         // sort the list
         Collections.sort(numbers);
