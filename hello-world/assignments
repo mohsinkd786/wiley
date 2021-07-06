@@ -1,0 +1,109 @@
+// Assigment - 06/07/2021
+
+List<User> users= new ArrayList();
+users.add(new User());
+
+users.add(new Employee());
+users.add(new Employee());
+
+users.forEach(u->{
+    if(u instanceof Employee){
+        //
+
+    }
+})
+List<Employee> emps =new ArrayList();
+emps.add(new Employee());
+emps.add(new Employee());
+
+
+// Step1:  filter employees from users list
+// Step2:  find out the cost incurrent on a project by its employees, it shouldnt go more
+           than the project budget
+
+// Step3:  release the resource from the project whose cost incurrered gets beyond the budget
+           however we should be utilising the maximum budget
+
+class User{
+    String id;
+    String name;
+}
+
+class Employee extends User{
+
+    Address address;
+    Project project;
+    double salary;
+
+}
+
+class Address{
+    String city;
+    String zipCode;
+ }
+
+ class Project{
+    int projectId;
+    String name;
+    double budget;
+ }
+e.g.
+ Google - 1000
+        3 Emps -
+            emp1 - 400
+            emp2 - 500
+            emp3 - 300 = 1200
+
+
+
+// git commands
+
+// FOR CREATING A NEW GIT PROJECT
+// create a folder in your local
+
+mkdir myfolder
+
+cd myfolder
+
+git init
+
+// add all files to git change set
+
+git add .
+
+// commit files to local server
+
+git commit -m 'Some commit message'
+
+// upload to git server
+
+// we will need to add the remote first
+
+// git remote add origin https://github.com/mohsinkd786/spring.git
+
+// upload your files to git remote server
+
+git push --set-upstream origin master
+
+
+FLOW 2 ::::
+
+// INCASE YOU HAVE CLONED AN EMPTY REPO FROM GITHUB
+
+// download the empty repository
+
+git clone https://github.com/mohsinkd786/spring.git
+
+cd spring
+
+// add all files to git change set
+
+git add .
+
+// commit files to local server
+
+git commit -m 'Some commit message'
+
+// upload your files to git remote server
+
+git push

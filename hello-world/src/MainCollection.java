@@ -1,9 +1,9 @@
-import com.mohsinkd786.generics.BMW;
+import com.mohsinkd786.generics.*;
 import com.mohsinkd786.generics.Car;
-import com.mohsinkd786.generics.Harley;
-import com.mohsinkd786.generics.VehicleService;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class MainCollection {
@@ -64,5 +64,25 @@ public class MainCollection {
         vehicleService1.<Integer,Integer>getInfo(Arrays.asList(1,2));
 
         //System.out.println("String return type : "+str);
+
+
+        Bike bik = new Bike();
+
+        Bike bike1 = new Harley();
+        Bike harley2 = new Harley();
+
+        List<Bike> bikes = Arrays.asList(bik,bike1,harley2);
+        List<Harley> harleys = new ArrayList<>();
+
+        for(Bike b: bikes){
+
+            if(b instanceof Harley){
+                Harley h= (Harley) b;
+
+                System.out.println("Harley ");
+            }
+        }
+
     }
 }
+
