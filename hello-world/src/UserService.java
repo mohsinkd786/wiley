@@ -6,15 +6,16 @@ public class UserService {
 
         // fetch me
         // refetch me -1
-        List numbers = Arrays.asList(1,4,2,5,16,7);
+        List<Integer> numbers = Arrays.asList(1,4,2,5,16,7);
+
         // sort the list
         Collections.sort(numbers);
 
-        for (Object i: numbers) {
+        for (Integer i: numbers) {
             System.out.println(i);
         }
         // traversing via the list of users now
-        List users =  Arrays.asList(
+        List<User> users =  Arrays.asList(
                 new User(1,"User1"),
                 new User(1,"User4"),
                 new User(3,"User3"),
@@ -25,11 +26,12 @@ public class UserService {
         Collections.sort(users,new UserSortByName());
         Collections.sort(users,new UserReverseSortByName());
 
-        // convert list to array
-        Object[] arrs = users.toArray();
+        Collections.sort(numbers);
 
-        for (Object u:users) {
-            User user = (User)u;
+        // convert list to array
+        //User[] arrs = (User[]) users.toArray();
+
+        for (User user:users) {
             System.out.println(user.id +" -- "+user.name);
         }
     }
@@ -59,11 +61,11 @@ class User implements Comparable{
     }
 }
 
-class UserSortByName implements Comparator{
+class UserSortByName implements Comparator<User>{
     @Override
-    public int compare(Object o1, Object o2) {
-        User user1 = (User)o1;
-        User user2 = (User)o2;
+    public int compare(User o1, User o2) {
+        User user1 = o1;
+        User user2 = o2;
 
         // first sorting
         int comparedTo = user1.compareTo(user2);
