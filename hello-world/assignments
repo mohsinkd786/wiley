@@ -121,3 +121,13 @@ mp.put(employeee.get(i).project,emps);
 approach 2 -
 
 
+
+
+// mini project
+
+Build an application that constitutes for a banking platform , it should handle the account transactions,
+ for credit & debit as per the banking systems, we should have the account details tracked as well
+
+Topics to be used : Java - (Streams / Lambdas / Oops / List Collection)
+
+

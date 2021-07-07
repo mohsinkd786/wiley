@@ -11,12 +11,19 @@ public class MainClass {
         //
         List<Integer> nums = Arrays.asList(1,2,5,6,10);
 
-        Optional<Integer> result = nums.stream()
+        //Optional<Integer> result =
+                nums.stream()
                 //.reduce((n, a)-> Math.max(n,a));
-                  .reduce(Math::max);
+                //  .reduce(Math::max).ifPresent(System.out::println);
+                .reduce(Math::min).ifPresent(e-> System.out.println(e));
+
+
+        nums.stream().max(Integer::compare).ifPresent(System.out::println);
+        nums.stream().min(Integer::compare).ifPresent(System.out::println);
+
                 //.ifPresent(System.out::println);
 
-        System.out.println("result "+result.get());
+        //System.out.println("result "+result.get());
 
         List<String> strings = Arrays.asList("one","two","three");
 
@@ -75,12 +82,17 @@ public class MainClass {
                     .collect(Collectors.toList());
                     //.forEach(num-> System.out.println("Str Values :: "+num));
 
-        // convert users to employees
-        List<User> users = Arrays.asList(
-                new User(1,"User 1"),
-                new User(22,"User 22"),
-                new User(3,"User 3"));
+        Optional<User> user1 = Optional.of(new User(1,"User 1"));
+        Optional<User> user2 = Optional.of(new User(22,"User 22"));
+        Optional<User> user3 = Optional.of(new User(3,"User 3"));
+        Optional<User> user4 = Optional.ofNullable(null);
 
+        // convert users to employees
+        List<Optional<User>> users = new ArrayList<>();
+        users.add(user1);
+        users.add(user2);
+        users.add(user3);
+        users.add(user4);
 
         EmployeeComparator comparator = new EmployeeComparator();
 
@@ -92,7 +104,28 @@ public class MainClass {
                // X //.sorted(comparator::compare)
                 //.sorted((e1,e2)-> comparator.compare(e1,e2))
                 .collect(Collectors.toList()).forEach(System.out::println);
+            //.collect(Collectors.toMap(e-> e.empId,e->e)); // from list to map
 
+        String str=null;
+
+        compute(Optional.ofNullable(str));
+
+        MyClass myClass = MyClass.getMyClass();
+
+        myClass.id = "Hello";
+
+        MyClass myClass1= MyClass.getMyClass();
+
+        System.out.println("My Class "+myClass1.id);
+    }
+
+    public static void compute(Optional<String> optional){
+        if(optional.isPresent()){
+            String subStr = optional.get().substring(1);
+            System.out.println("IF");
+        }else{
+            System.out.println("ELSe");
+        }
     }
 }
 
@@ -140,9 +173,11 @@ class Employee {
     int empId;
     String empName;
 
-    public Employee(User user){
-        this.empId = user.id;
-        this.empName = user.name;
+    public Employee(Optional<User> user){
+        if(user.isPresent()) {
+            this.empId = user.get().id;
+            this.empName = user.get().name;
+        }
     }
 
 
@@ -205,3 +240,19 @@ class EmployeeComparator implements Comparator<Employee>{
 * reduce -> reduce the stream to a single value
 * toArray -> convert to array
 * */
+
+
+// singleton object
+class MyClass{
+
+    private static MyClass myClass = new MyClass();
+
+    public String id;
+    private MyClass(){
+
+    }
+
+    public static MyClass getMyClass(){
+        return myClass;
+    }
+}
