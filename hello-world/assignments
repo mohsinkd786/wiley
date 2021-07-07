@@ -16,7 +16,6 @@ List<Employee> emps =new ArrayList();
 emps.add(new Employee());
 emps.add(new Employee());
 
-
 // Step1:  filter employees from users list
 // Step2:  find out the cost incurrent on a project by its employees, it shouldnt go more
            than the project budget

@@ -82,7 +82,24 @@ public class MainCollection {
                 System.out.println("Harley ");
             }
         }
+        //
+        AA aa = new AA();
+        aa.index = 1;
+        aa.name = "Username";
+
+        AA.process(aa.index,aa.name);
 
     }
 }
 
+class AA{
+    public int index;
+    public String name;
+
+    public static void process(int index,String name){
+        System.out.println("Index "+index+"-- Name: -"+name);
+//        AA aa= new AA();
+//        aa.index = 10;
+//        aa.name = "Hello";
+    }
+}
