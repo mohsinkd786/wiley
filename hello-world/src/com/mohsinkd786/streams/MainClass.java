@@ -1,9 +1,6 @@
 package com.mohsinkd786.streams;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -13,6 +10,25 @@ public class MainClass {
     public static void main(String[] args) {
         //
         List<Integer> nums = Arrays.asList(1,2,5,6,10);
+
+        Optional<Integer> result = nums.stream()
+                //.reduce((n, a)-> Math.max(n,a));
+                  .reduce(Math::max);
+                //.ifPresent(System.out::println);
+
+        System.out.println("result "+result.get());
+
+        List<String> strings = Arrays.asList("one","two","three");
+
+        //UserString userString = new UserString();
+
+        List<String> sortedStrings = strings.
+                                            stream().
+                                            //sorted((s1,s2)-> s1.compareTo(s2)).
+                                            sorted(String::compareTo).
+                                            collect(Collectors.toList());
+                                            //forEach(System.out::println);
+
         //List<Integer> evenNums = new ArrayList<>();
 
         // filter out the even numbers from the actual list
@@ -53,24 +69,30 @@ public class MainClass {
         List<Integer> msgNums = msgs
                     .stream()
                     .filter(s -> s.startsWith("1"))
-                    .map(e -> new Integer(e))
-                .distinct()
+                    //.map(e -> new Integer(e))
+                    .map(Integer::new)
+                    //.distinct()
                     .collect(Collectors.toList());
-
-                //.forEach(num-> System.out.println("Str Values :: "+num));
-
+                    //.forEach(num-> System.out.println("Str Values :: "+num));
 
         // convert users to employees
         List<User> users = Arrays.asList(
                 new User(1,"User 1"),
-                new User(2,"User 2"),
+                new User(22,"User 22"),
                 new User(3,"User 3"));
 
 
-        List<Employee> employees =
+        EmployeeComparator comparator = new EmployeeComparator();
+
+//        List<Employee> employees =
         users.stream()
-                .map(user-> new Employee(user.id,user.name)) // transform user into employee entity
-                .collect(Collectors.toList());
+                //.map(user-> new Employee(user)) // transform user into employee entity
+                .map(Employee::new)
+                .sorted((e1,e2)-> e1.empId - e2.empId)
+               // X //.sorted(comparator::compare)
+                //.sorted((e1,e2)-> comparator.compare(e1,e2))
+                .collect(Collectors.toList()).forEach(System.out::println);
+
     }
 }
 
@@ -118,8 +140,68 @@ class Employee {
     int empId;
     String empName;
 
-    public Employee(int empId, String empName) {
-        this.empId = empId;
-        this.empName = empName;
+    public Employee(User user){
+        this.empId = user.id;
+        this.empName = user.name;
+    }
+
+
+    @Override
+    public String toString() {
+        return "[ Emp: "+empId +" Name: "+empName +"]";
     }
 }
+
+class UserString implements Comparator<Employee>{
+
+    @Override
+    public int compare(Employee o1, Employee o2) {
+        return o1.empId - o2.empId;
+    }
+}
+
+class EmployeeComparator implements Comparator<Employee>{
+    @Override
+    public int compare(Employee o1, Employee o2) {
+        return o1.empId - o2.empId;
+    }
+}
+
+/**
+ * Method References
+ *
+ * 1. calling the static methods
+ * 2. calling the constructor
+ * 3. calling instance method
+ * 4. calling instance method from type of class
+ * */
+
+
+/*
+*
+* Intermediate Operators
+*
+* map -> transformer
+* filter -> perform filteration of data
+* sorted -> sort based on comparator
+* flatMap -> flatten the nested lists -> list<list<string>> --> list<string>
+* peek -> perform a specific operation e.g. change the state of the current object
+* min / max -> get a specific value
+* distinct -> remove duplication
+* allMatch / anyMatch / noneMatch -> matchers somewhat similar to filter
+* average /sum / range - aggregate operations
+* generators -> generate / iterator
+* takeWhile -> perform while loop
+* limit ->
+* skip ->
+* findFirst ->
+*
+*
+* Terminal Operators
+
+*
+* collect - accumulate the result from stream - e.g. toList(), toSet() , joining(joiners), partitionBy / GroupingBy
+* forEach -> traverse on the stream
+* reduce -> reduce the stream to a single value
+* toArray -> convert to array
+* */

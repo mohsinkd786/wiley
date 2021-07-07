@@ -53,7 +53,12 @@ public class MainClass {
 
         //Comparator<Emp> empComparator = (emp1,emp2) -> emp1.id - emp2.id;
 
-        Collections.sort(emps,(emp1,emp2) -> emp1.id - emp2.id);
+        //Collections.sort(emps,(emp1,emp2) -> emp1.id - emp2.id);
+
+        Comparator<Emp> comparator = new SortById();
+
+        // using method reference instead of lambdas to reduce code
+        Collections.sort(emps,comparator::compare);
 
         //emps.forEach(e-> out.println(e.id));
         for (Emp emp:emps) {
@@ -70,3 +75,10 @@ class Emp {
     }
 }
 
+class SortById implements Comparator<Emp>{
+
+    @Override
+    public int compare(Emp o1, Emp o2) {
+        return o1.id - o2.id;
+    }
+}

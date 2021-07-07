@@ -106,3 +106,18 @@ git commit -m 'Some commit message'
 // upload your files to git remote server
 
 git push
+
+
+//
+
+check for the budget w.r.to salary
+approach 1- create a map<Project, List<Employees> of list<Employees>
+map mp = new hashmap();
+List<Emp> emps = new ArrayList();
+
+mp.put(employeee.get(i).project,emps);
+
+
+approach 2 -
+
+
