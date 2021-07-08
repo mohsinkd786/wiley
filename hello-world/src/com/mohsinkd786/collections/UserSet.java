@@ -10,7 +10,7 @@ public class UserSet {
         //
         // set doesnt allow duplication
         // doesnt allow null values
-        Set set = new HashSet(); // uses hashmap to store the values
+        Set set = new HashSet<>(); // uses hashmap to store the values
 
         set.add(11);
 
@@ -25,7 +25,6 @@ public class UserSet {
         set.add("");
 
         set.forEach(System.out::println);
-
 
 //        for (int i = 0; i < 5000; i++) {
 //            set.add(i);
@@ -117,6 +116,7 @@ public class UserSet {
 
         // custom objects stored in set
         Set<User> userSet = new TreeSet(Comparator.comparing(User::getId));
+
         //Set<User> userSet = new TreeSet<>((u1,u2)->u2.getName().compareTo(u1.getName()));
         //Set<User> userSet = new TreeSet();
 
