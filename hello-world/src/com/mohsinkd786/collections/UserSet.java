@@ -153,8 +153,22 @@ public class UserSet {
     }
 }
 
-// expected sort : 1,2,User{1,"User1"}, User{2,"User2"} (user by id),Hello,Hi
-// expected sort : Hello,Hi, User{1, "User1"}, User{2,"User2"} (user by name),1,2
+// set = [2,1, User{2,"User2"},User{1,"Adam"},Hi,Hello]
+
+// integers
+// users
+// strings
+
+// case 1: sort : show the integers first then users sorted by user id then strings
+
+// expected sort : 1,2,User{1,"Adam"}, User{2,"User2"} (user by id),Hello,Hi
+
+// case 2: sort : show me sorted strings then users sorted by user id then integers
+
+// expected sort : Hello,Hi, User{1, "Adam"}, User{2,"User2"},1,2
+
+// case 3: sort : show all the objects sorted based on string whether that is username or simple string then integers
+
 // expected sort : User{1,"Adam"},Hello,Hi,User{2,"User2"},1,2
 
 
