@@ -32,7 +32,8 @@ public class MainClass {
         List<String> sortedStrings = strings.
                                             stream().
                                             //sorted((s1,s2)-> s1.compareTo(s2)).
-                                            sorted(String::compareTo).
+                                            //sorted(String::compareTo).
+                                            sorted(Comparator.reverseOrder()).
                                             collect(Collectors.toList());
                                             //forEach(System.out::println);
 
@@ -256,3 +257,11 @@ class MyClass{
         return myClass;
     }
 }
+
+
+/*
+* Topics for tomorrow
+* Maps / Sets - Collections
+* Immutable classes
+* Threads - might start
+* */
