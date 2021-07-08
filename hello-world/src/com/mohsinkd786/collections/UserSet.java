@@ -153,8 +153,13 @@ public class UserSet {
     }
 }
 
+// expected sort : 1,2,User{1,"User1"}, User{2,"User2"} (user by id),Hello,Hi
+// expected sort : Hello,Hi, User{1, "User1"}, User{2,"User2"} (user by name),1,2
+// expected sort : User{1,"Adam"},Hello,Hi,User{2,"User2"},1,2
+
+
 class Type implements Comparable<Type>{
-    private Object object;
+    private Object object; // int // string // user -- expected sort : 1,2,Hello,Hi, User{1,"User1"}, User{2,"User2"}
 
     public Type(){
 
