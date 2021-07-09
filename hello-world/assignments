@@ -131,3 +131,17 @@ Build an application that constitutes for a banking platform , it should handle 
 Topics to be used : Java - (Streams / Lambdas / Oops / List Collection)
 
 
+
+
+/**
+ *  Assuming our collection looks something like below:
+ *  [ User{ id:2, name: 'User2', address: [ { city: 'DEL' , zip:110001 }, { city: 'BLR' , zip: 560001 }] }
+ *   User{ id:1, name: 'User1', address: [ { city: 'GN' , zip:201305 }, { city: 'BLR' , zip: 560001 }] }
+ *   User{ id:3, name: 'User3', address: [ { city: 'GN' , zip:201305 }, { city: 'BLR' , zip: 560001 }] }]
+ * Expected Structure:
+ * [ address { city: BLR , zip:560001 ,users: [User{ id:1, name: 'User2'}, User{ id:2, name: 'User2'},User{ id:3, name: 'User3'}] },
+ *   address { city: GN , zip:201305 ,users: [User{ id:1, name: 'User1'}, User{ id:3, name: 'User3'] }
+ *
+ * ]
+ *
+ * */
