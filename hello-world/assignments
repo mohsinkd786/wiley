@@ -142,6 +142,6 @@ Topics to be used : Java - (Streams / Lambdas / Oops / List Collection)
  * [ address { city: BLR , zip:560001 ,users: [User{ id:1, name: 'User2'}, User{ id:2, name: 'User2'},User{ id:3, name: 'User3'}] },
  *   address { city: GN , zip:201305 ,users: [User{ id:1, name: 'User1'}, User{ id:3, name: 'User3'] }
  *
- * ]
+ * ] = Map<Address,List<User>>
  *
  * */
