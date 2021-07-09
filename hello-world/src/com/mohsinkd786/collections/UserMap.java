@@ -1,9 +1,7 @@
 package com.mohsinkd786.collections;
 
-import java.util.Dictionary;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.Map;
+import java.util.*;
+import static java.util.Comparator.*;
 
 import static java.lang.System.out;
 public class UserMap {
@@ -80,9 +78,36 @@ public class UserMap {
         // allows multiple null values
         // is not thread safe
 
+
+        out.println("TREE MAP :::::: ");
+        // TreeMap
+        TreeMap<String,String> treeMap = new TreeMap<>();
+        treeMap.put("one","one");
+        treeMap.put("Hi","twotwo");
+        treeMap.put("Hello","three");
+        treeMap.put("Helo","three");
+        treeMap.put("Hola","three");
+
+        treeMap.forEach((k,v)-> out.println("Key "+k+" Value : "+v));
+
+        Map<UserKey,String> userKeyMap = new TreeMap<>((u1,u2)-> u2.id.compareTo(u1.id));
+
+        UserKey usr5 = new UserKey("1","User1");
+        UserKey usr6 = new UserKey("4","User4");
+        UserKey usr7 = new UserKey("2","User2");
+        UserKey usr8 = new UserKey("3","User3");
+
+        userKeyMap.put(usr5,"Hola");
+        userKeyMap.put(usr6,"Hey");
+        userKeyMap.put(usr7,"Hello");
+        userKeyMap.put(usr8,"Wassup");
+
+
+        userKeyMap.forEach((k,v)-> out.println("User TREE MAP : "+k +" "+v));
+
+
     }
 }
-
 
 class UserKey{
     String id;
