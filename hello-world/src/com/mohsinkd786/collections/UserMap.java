@@ -144,3 +144,46 @@ class UserKey{
         return this.id +" "+this.name;
     }
 }
+
+/**
+ *
+ * List: [
+*          User{id:3,name: User3, address: [
+ *                                          { city: BLR, zipCode: 560001 },
+ *                                          { city: BLR , zipCode: 560002 },
+ *                                          { city: DEL, zipCode: 110001}]}
+ *         User{id:44,name: User44, address: [
+ *  *                                          { city: BLR, zipCode: 560038 },
+ *  *                                          { city: DEL , zipCode: 110096 },
+ *  *                                          { city: DEL, zipCode: 110001}]}
+ *          User{id:2,name: User2, address: [
+ *  *  *                                          { city: BOM, zipCode: 400018 },
+ *  *  *                                          { city: BOM , zipCode: 400037 },
+ *  *  *                                          { city: DEL, zipCode: 110001 }
+ *                                                { city: BLR, zipCode: 560001 }]}
+ *                                          ]
+ *  Build a ranking system for cities based on employees functioning from there, to identify / designate a city as hub office
+ *  [
+ *      { city:DEL, zipCode:110001 }, [
+ *                                         User{id:2, name: User2 }, User{id:3, name: User3 }, User{id:44, name: User44 }
+ *                                  ],
+ *      { city:BLR, zipCode:560001 }, [
+ *  *                                         User{id:2, name: User2 }, User{id:3, name: User3 }
+ *  *                                  ],
+ *       *                                  ],
+ *          { city: BLR, zipCode: 560002 },[
+ *  *  *  *                                         User{id:3, name: User3 }
+ *  *  *  *                                  ],
+ *  *    { city: BOM, zipCode: 400018 },[
+ *  *  *  *                                         User{id:2, name: User2 }
+ *  *  *  *                                  ],
+ *  *
+ *  *      { city: BOM, zipCode: 400037 },[
+ *  *  *  *  *                                         User{id:2, name: User2 }
+ *  *  *  *
+ *  *
+ *  ]
+ *
+ *
+ *
+ * */
