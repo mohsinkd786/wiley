@@ -59,7 +59,6 @@ public class MainClass {
         EmpService empService = new EmpService();
 
         Thread empThread1 = new Thread(empService);
-
         Thread empThread2 = new Thread(empService);
 
         // start the thread
@@ -73,7 +72,7 @@ public class MainClass {
         // obj3 -> t2
             //list
 
-        empService.getIntegers().forEach(in-> System.out.println("INT "+in));
+        //empService.getIntegers().forEach(in-> System.out.println("INT "+in));
 
     }
 }
@@ -111,21 +110,22 @@ class UserService extends Thread{
 // create by implementing runnable interface
 class EmpService implements Runnable{
 
-    private List<Integer> integers = Collections.emptyList();
+    private List<Integer> integers = new ArrayList<>();
 
     @Override
     public void run() {
-        integers = new ArrayList<>();
-
-        for (int i = 100; i > 0 ; i--) {
-            integers.add(i);
-            try {
-                Thread.sleep(1000);
-            }catch (InterruptedException inEx){
-                System.err.println(inEx);
+        for(int i = 100;i >0;i--) {
+            if (integers.contains(i)) {
+                continue;
+            } else {
+                integers.add(i);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException inEx) {
+                    System.err.println(inEx);
+                }
             }
-
-            System.out.println(Thread.currentThread().getName() + " ---- "+i);
+            System.out.println(Thread.currentThread().getName() + " ---- " + i);
         }
     }
 
@@ -140,3 +140,49 @@ class EmpService implements Runnable{
 // 1. instance variable - rely in heap
 // 2. Thread 1 - local copy / thread copy
 // 3. Thread 2 - local copy / thread copy
+
+
+/**
+ * 1. calculcate the sum of fibonacci series till the nth element using threads
+ *  e.g = 1,
+ *          1,
+ *          2,
+ *          3,
+ *          5,
+ *          8,13
+ *  a).sum of the fibonacci series = 1 + 1 + 2 + 3 + 5 + 8 + 13 = ?
+ *  b). expected = [
+ *      0 + 1 = 1,
+ *      1 + 1 = 2,
+ *      2 + 2 = 4,
+ *      4 + 3 = 7,
+ *      7 + 5 = 12,
+ *      12 + 8 = 20,
+ *      20 + 13 = 33
+ *  ]
+ *
+ * 2. transform a list of lists into a map using threads e.g.
+ *     Users = [
+ *              [
+ *                  { id:1, name: User1 ,
+ *                      projects: [
+ *                                  { id: 1, name: PRJ1 },
+ *                                  { id: 2, name: PRJ2 }
+ *                                  ]
+ *                   }
+ *              ]
+ *     ]
+ *
+ *     Expected = [
+ *                  { id:1, name: User, projectId: 1 },{ id: 1, PRJ1 }
+ *                  { id:1, name: User, projectId: 2 },{ id:2, PRJ2 }
+ *     ]
+ *
+ *     however one of the threads keeps on reading from the expected list to be printed as soon as an element
+ *     is added to the list it should be picked by the other thread to be
+ *     processed- in our case we will just print it for now
+ *
+ *
+ *
+ *
+ * */
