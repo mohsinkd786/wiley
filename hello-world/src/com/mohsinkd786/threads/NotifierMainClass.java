@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NotifierMainClass {
+
     public static void main(String[] args) {
 
         List<Integer> integers = new ArrayList<>();
@@ -11,7 +12,8 @@ public class NotifierMainClass {
 
         Producer producer = new Producer(integers,size);
         // create the thread
-        Thread t1 = new Thread(producer,"Producer");
+        Thread t1 = new Thread(producer,"Producer1");
+        Thread t2 = new Thread(producer,"Producer2");
         Consumer consumer = new Consumer(integers);
         // create the Thread
         Thread consumer1 = new Thread(consumer,"Consumer1");
@@ -23,6 +25,7 @@ public class NotifierMainClass {
 
         // start the thread
         t1.start();
+        t2.start();
         //
         consumer1.start();
         //
@@ -34,8 +37,9 @@ public class NotifierMainClass {
 
 class Producer implements Runnable {
 
-    private List<Integer> nums;
+    private volatile List<Integer> nums;
     private int CAPACITY;
+    private volatile int i;
 
     public Producer(List<Integer> nums, int size){
         this.nums = nums;
@@ -44,15 +48,15 @@ class Producer implements Runnable {
 
     @Override
     public void run() {
-
-        // call the producer
-
-        int i = 0;
-        while(true){
-            try{
-                produce(i++);
-            }catch (InterruptedException ex){
-                ex.printStackTrace();
+        synchronized (this) {
+            i = 0;
+            // call the producer
+            while (true) {
+                try {
+                    produce(i++);
+                } catch (InterruptedException ex) {
+                    ex.printStackTrace();
+                }
             }
         }
     }
@@ -66,7 +70,7 @@ class Producer implements Runnable {
             }
             Thread.sleep(1000);
             nums.add(i);
-            System.out.println("Produced:: "+i);
+            System.out.println("Produced:: "+Thread.currentThread().getName()+"  -- " +i);
             nums.notifyAll();
         }
     }
