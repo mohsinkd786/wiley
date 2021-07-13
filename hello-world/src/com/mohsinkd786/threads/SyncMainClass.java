@@ -1,5 +1,7 @@
 package com.mohsinkd786.threads;
 
+import java.util.Vector;
+
 public class SyncMainClass {
     public static void main(String[] args) {
 
@@ -13,6 +15,7 @@ public class SyncMainClass {
         Thread t2 = new Thread(process,"t2");
         // start the thread
         t2.start();
+
         // create Thread 3
         Thread t3 = new Thread(process,"t3");
         // start the second thread
@@ -74,7 +77,7 @@ class Process implements Runnable{
         return counter;
     }
 
-    public synchronized void increment() {
+    public void increment() {
         try{
             Thread.sleep(100);
         }catch (InterruptedException ex){
@@ -91,16 +94,19 @@ class Process implements Runnable{
     public void run() {
 
         // to resolve the race condition we will synchronize the block
-        //synchronized (this) {
+
+        synchronized (this) {
             // this is our critical section /area
             // only a single thread can enter this area at any given point of time
             // increment the counter
             this.increment();
-            System.out.println(" " + Thread.currentThread().getName() + " " + this.getCounter());
-        //}
+            System.out.println("Sync:: " + Thread.currentThread().getName() + " " + this.getCounter());
+        }
+
         // decrement the counter
-       // this.decrement();
-       // System.out.println(" "+Thread.currentThread().getName() + " "+this.getCounter() );
+        this.increment();
+
+        System.out.println(" "+Thread.currentThread().getName() + " "+this.getCounter() );
     }
 
 }
