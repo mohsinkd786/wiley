@@ -20,7 +20,7 @@ Yesterday:
 
 What we will learn today & tomorrow:
 
-1. Synchronisation
+1. Synchronisation - Race Condition /
 2. Thread operations - join / yield
 3. Thread Communications - wait / notify
 4. Thread creation - Callable
