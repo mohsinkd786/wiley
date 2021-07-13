@@ -65,6 +65,11 @@ public class MainClass {
         empThread1.start();
         empThread2.start();
 
+        // main thread
+                // empThread1 - List<Integer> int1
+                // empThread2 - List<Integer> int2
+
+        // Thread Stack -
         // obj1 -> t1
             //list
         // obj2 -> t3

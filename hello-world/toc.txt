@@ -1,0 +1,29 @@
+
+
+Things we have covered:
+
+1. Collections
+2. Java 8 - Streams / Lambdas / Functional Interfaces
+3. Anonymous classes
+4. Oops
+5. Exception Handling
+
+
+
+Yesterday:
+1. Threads
+2. Lifecycle
+3. Creation - Thread / Runnable
+4. Interthread communication - Thread.sleep()
+
+
+
+What we will learn today & tomorrow:
+
+1. Synchronisation
+2. Thread operations - join / yield
+3. Thread Communications - wait / notify
+4. Thread creation - Callable
+5. Overview of Future
+6. Thread Pool
+7. Executor Framework
