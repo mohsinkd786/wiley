@@ -174,13 +174,22 @@ class EmpService implements Runnable{
  *                                  { id: 1, name: PRJ1 },
  *                                  { id: 2, name: PRJ2 }
  *                                  ]
+ *                   },
+ *                   {
+ *                       id: 2, name : User2,
+ *                       projects: [
+ *                                  { id: 2, name : PRJ2 },
+ *                                  { id: 3, name: PRJ3 }
+ *                       ]
  *                   }
  *              ]
  *     ]
  *
  *     Expected = [
- *                  { id:1, name: User, projectId: 1 },{ id: 1, PRJ1 }
- *                  { id:1, name: User, projectId: 2 },{ id:2, PRJ2 }
+ *                  { id:1, name: User1, projectId: 1 },{ id: 1, PRJ1 }
+ *                  { id:1, name: User1, projectId: 2 },{ id: 2, PRJ2 }
+ *                  { id:2, name: User2, projectId: 2 },{ id: 2, PRJ2 }
+ *                  { id:2, name: User2, projectId: 3 },{ id: 3, PRJ3 }
  *     ]
  *
  *     however one of the threads keeps on reading from the expected list to be printed as soon as an element
