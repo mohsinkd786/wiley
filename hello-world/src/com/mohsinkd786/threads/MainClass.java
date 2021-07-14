@@ -185,17 +185,45 @@ class EmpService implements Runnable{
  *              ]
  *     ]
  *
+ *      Map<CustomUser,Project>
+ *
+ *          CustomUser{
+ *              userId,
+ *              username,
+ *              projectId
+ *          }
+ *          Project{
+ *              projectId,
+ *              projectname
+ *          }
  *     Expected = [
- *                  { id:1, name: User1, projectId: 1 },{ id: 1, PRJ1 }
- *                  { id:1, name: User1, projectId: 2 },{ id: 2, PRJ2 }
- *                  { id:2, name: User2, projectId: 2 },{ id: 2, PRJ2 }
- *                  { id:2, name: User2, projectId: 3 },{ id: 3, PRJ3 }
+ *                  { id:1, name: User1, projectId: 1 },{ id: 1,name: PRJ1 }
+ *                  { id:1, name: User1, projectId: 2 },{ id: 2,name: PRJ2 }
+ *                  { id:2, name: User2, projectId: 2 },{ id: 2,name: PRJ2 }
+ *                  { id:2, name: User2, projectId: 3 },{ id: 3,name: PRJ3 }
  *     ]
  *
- *     however one of the threads keeps on reading from the expected list to be printed as soon as an element
- *     is added to the list it should be picked by the other thread to be
+ *     however one of the threads keeps on reading from the expected list to be printed as soon as an
+ *     element is added to the list it should be picked by the other thread to be
  *     processed- in our case we will just print it for now
  *
+ *
+ *      Bank
+ *          Customers - Many
+ *                  Customer - Mohsin
+ *          Account -
+ *                  [ 101,102, 104 ]
+ *
+ *                  Notes : 50 + 20 + 10 + 5
+ *
+ *          Transaction - ATM = 300 = 50 * 4 + 10 * 10
+ *                              200 = 50 * 2 + 10 * 10
+ *                              100 = 50 + 10 * 5
+ *                  Transaction - Mohsin withdrew 100 rs from account # 101 = 50 + 50
+ *
+ *                                Mohsin withdrew 100 rs from account # 101 = 50 + 10 * 5
+ *
+ *                                Mohsin withdrew 50 rs from account # 101 = 50
  *
  *
  *
