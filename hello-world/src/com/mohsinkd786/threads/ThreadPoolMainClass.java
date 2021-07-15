@@ -1,7 +1,7 @@
 package com.mohsinkd786.threads;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.Optional;
+import java.util.concurrent.*;
 
 public class ThreadPoolMainClass {
     public static void main(String[] args) {
@@ -43,12 +43,18 @@ public class ThreadPoolMainClass {
 
         service.execute(object1);
 
-        service.shutdown();
+        // service.shutdown();
+//
+//        try{
+//            service.awaitTermination(1000, TimeUnit.MILLISECONDS);
+//        }catch (InterruptedException ex){
+//            ex.printStackTrace();
+//        }
 
-        service.execute(object2);
-        service.execute(object1);
-
-        service.execute(object);
+//        service.execute(object2);
+//        service.execute(object1);
+//
+//        service.execute(object);
 
         // we can return
 
@@ -56,12 +62,41 @@ public class ThreadPoolMainClass {
         // close of the thread pool
         // just a request to close of the link eventually
 
+        CallService callService = new CallService();
+
+        Future<String> callFuture = service.submit(callService); // task 1
+
+        try{
+            if(callFuture.isDone()){
+                String res1 = callFuture.get();
+            }
+
+            System.out.println("Future from Call Service "+callFuture.get());
+
+        }catch (InterruptedException | ExecutionException ex){
+            ex.printStackTrace();
+        }
+        //service.shutdown();
+
+        Future<String>  callFuture1 = service.submit(callService); // task 2
+        // interrupt a running thread
+        callFuture1.cancel(true);
+
+        if(callFuture1.isCancelled()){
+            try{
+            System.out.println("cancelled "+callFuture1.get());
+
+            }catch (InterruptedException | ExecutionException ex){
+                ex.printStackTrace();
+            }
+        }
+
     }
 }
 
 class ThreadPool implements Runnable{
     void process(){
-        for (int i = 0; i < 10 ; i++) {
+        for (int i = 0; i < 5 ; i++) {
             try {
                 Thread.sleep(10);
             }catch (InterruptedException ex){
@@ -74,5 +109,24 @@ class ThreadPool implements Runnable{
     @Override
     public void run() {
        process();
+    }
+}
+
+class CallService implements Callable<String>{
+
+    @Override
+    public String call() {
+        StringBuilder response = new StringBuilder();
+        for(int i= 0;i< 100;i++){
+//            try{
+//                Thread.sleep(10);
+//            }catch (InterruptedException ex){
+//                ex.printStackTrace();
+//            }
+            response.append(i);
+            response.append("_");
+            System.out.println(Thread.currentThread().getName() + " "+i);
+        }
+        return response.toString();
     }
 }
