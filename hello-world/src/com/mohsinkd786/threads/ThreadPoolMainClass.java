@@ -91,7 +91,11 @@ public class ThreadPoolMainClass {
         t.start();
 
         try{
-            String futureResponse = futureTask.get();
+            String futureResponse="";
+            if(futureTask.isDone()){
+                futureResponse = futureTask.get();
+            }
+
             System.out.println("FUTURE RESPONSE :: "+futureResponse);
         }catch (InterruptedException | ExecutionException ex){
             ex.printStackTrace();
