@@ -1,5 +1,7 @@
 package com.mohsinkd786.dsalgo;
 
+import java.util.PriorityQueue;
+
 public class DsMainClass {
     public static void main(String[] args) {
 
@@ -8,6 +10,9 @@ public class DsMainClass {
         ints[0] = 1;
 
         ints[0] = 2;
+
+        PriorityQueue queue = new PriorityQueue();
+
 
         // Linked List
         // Head -> [1,[ref to node 2]]
@@ -36,6 +41,36 @@ public class DsMainClass {
         // N
         // O()
 
+
+        // Stack - Last In First Out
+
+        // Push  - Add a new element , on top
+        // Pop - delete an element ,from top
+        // Peek - get the top most element
+
+
+        // Queue - FIFO
+
+        // Enqueue - add a new record - happens at the end / rear
+        // deque - remove a record - remove at the head / beginning / front
+        // peek - get the record / front
+
+
+        // 1. Simple Queue - FIFO
+        // 2. Circular Queue -
+        // 3. Priority Queue -
+
+        // REAR [1,1,6,7,9,-1] - FRONT
+
+        // REAR - [(11,P9),(10,P6),(8,P7)]- FRONT
+
+
+
+
+
+        // Array Based Implementation
+        // Insertion - O(1)
+        // Delete - O(1)
 
         // Performance Metrics
         /**
