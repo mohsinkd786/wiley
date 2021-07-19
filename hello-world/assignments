@@ -145,3 +145,34 @@ Topics to be used : Java - (Streams / Lambdas / Oops / List Collection)
  * ] = Map<Address,List<User>>
  *
  * */
+
+
+
+
+
+
+user table:
+1, User1, us@gg.com , p-1, u1
+2, User2, us1@gg.com , p-1, u2
+3, User3, us@gg.com , p-2 , u3
+4, User4, us@gg.com , p-4, u4
+5. User4, us@gg.com , p-4 , u4
+
+project table:
+
+1, att,1000, p1
+2, linkedin, 2000, p2
+3, att,1000 , p1
+4, att,1000, p1
+
+
+1. give me a query using joins to fetch the records for the two tables
+2. give me inner query or any othr approach to get the records from the 2 tables
+3. ensure uniqueness , avoid duplications e.g. in case we have multiple users associated with
+one project regardless of project id, they should be grouped by project details such as name
+& remaining columns.
+
+4. give me the list of users associated with a project, note duplication should be considered.
+5. give me queries & schema for 1NF / 2NF / 3NF & 5NF , give me the proposition for the best fit
+with justification
+
