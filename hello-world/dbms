@@ -173,7 +173,10 @@ Employee
 
 Id name project company cost_incurred_in_project
 
+//
 
+Give a database design for an ecommerce application, define table structures with primary keys & their
+relationships. Also devise BCNF or 4NF
 
 
 
