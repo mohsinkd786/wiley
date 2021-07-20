@@ -1,0 +1,185 @@
+
+
+
+Database
+
+
+1. Tables
+2. Views
+3. Keys
+4. Indexes
+
+
+ACID -
+
+Atomicity -
+
+Consistency -
+
+Isolation -
+
+Durability -
+
+Tables
+
+
+User Table:
+
+User Id:
+Name:
+User Type:
+
+Department:
+Phone:
+
+
+1 User1 Admin Accounts 101
+2 User2 Admin Accounts 102
+3 User3 Admin IT       103
+4 User2 Guest IT       102
+
+
+Normalization :
+
+1NF
+2NF
+3NF
+BCNF
+4NF
+
+Employee:
+
+ID Name Role1 Dept
+2  E2   Admin IT
+3  E3   Guest Accounts
+
+
+2NF :
+
+
+
+N number of columns -
+
+
+3 consumer connections are trying to create users
+1 consumer connection is trying to read users
+
+
+Student
+
+PK
+Id Name
+1  Std1
+2  Std2
+
+
+Subject
+
+PK
+ID  Name Teacher
+1   Phy   T2
+2   Maths T1
+
+Marks
+
+PK
+Id SId SubId Marks sessionId
+1  2   2      80    1
+2  2   1      90    1
+3  1   1      70    2
+
+3NF:
+
+1. 2NF
+2. no transitive dependency
+
+
+ExamSession
+Id sessionId Marks
+1    1        80
+2    1
+
+
+
+BCNF:
+
+1. 3NF
+2. X -> Y, X should not be a prime attribute
+
+Student :
+
+SId Subject Teacher
+1   Phy      T1
+2   Chem     T2
+3   Maths    T3
+2   Phy      T1
+3   Chem     T5
+
+
+
+Teacher :
+
+t1 name subject
+1  T1     Phy
+2  T2     Chem
+
+
+4NF:
+1. BCNF
+2. No Multi valued Dependency
+
+x -> y
+x -> is single valu
+y -> multiple value
+
+
+
+
+teacher -> subject
+
+
+Registration Tbl:
+
+SId subject Likes
+1    Maths  Cricket
+1    Science Basketball
+2    Phy     Cricket
+
+
+Student_subjects
+
+SId subject
+1    Maths
+1    Science
+2    Phy
+
+
+Likes
+
+Sid  likes
+1    Cricket
+2    Cricket
+1    Basketball
+
+
+
+
+
+
+
+
+
+Employee
+
+Id name project company cost_incurred_in_project
+
+
+
+
+
+
+
+
+
+
+
